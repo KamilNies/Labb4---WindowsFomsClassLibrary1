@@ -28,6 +28,11 @@ namespace ClassLibrary
             }
         }
 
+        public Word this[int i]
+        {
+            get => Words[i];
+        }
+
         //Methods
         public static string[] GetLists()
         {
@@ -83,40 +88,27 @@ namespace ClassLibrary
                 } 
             }
         }
-        public void Add(params string[] translations)
+        public void Add(params string[] translations) => Words.Add(new Word(translations));
+
+
+        /// <summary>
+        /// Sök igenom språket och ta bort ordet. 
+        /// </summary>
+        /// <param name="translation">Motsvarar index i this.Languages</param>
+        /// <param name="wordStr">Ordet som ska sökas efter och tas bort.</param>
+        /// <returns></returns>
+        public bool Remove(int translation, string wordStr)
         {
-            if (Words == null)
-                Words = new List<Word>();
-
-            translations = translations.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-            translations = translations.Select(x => x.Trim()).ToArray();
-            translations = translations.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-
-            if (translations.Length == Languages.Length)
-            {
-                Words.Add(new Word(translations.Select(x => x.ToLower()).ToArray()));
-            }
-            else
-            {
-                throw new ArgumentException("Invalid number of translations added");
-            }
-        }
-        public bool Remove(int translation, string word)
-        {
-            if (translation < 0 || translation > Languages.Length - 1)
-            {
-                throw new ArgumentOutOfRangeException($"Index {translation} is out of range");
-            }
-
             for (int i = 0; i < Words.Count; i++)
             {
-                if (word.ToLower() == Words[i].Translations[translation])
+                if (Words[i].Translations[translation].Equals(wordStr, StringComparison.InvariantCulture))
                 {
-                    Words.Remove(Words[i]);
+                    Words.RemoveAt(i);
                     return true;
                 }
             }
             return false;
+            //TODO Ta bort alla översatta ord eller bara det på det angivna språket?
         }
         public int Count()
         {
@@ -152,6 +144,79 @@ namespace ClassLibrary
                 return new Word(fromLanguages, toLanguages, Words[rng.Next(Words.Count)].Translations);
             }
             throw new ArgumentNullException("No Word objects found");
+        }
+
+        public static WordList LoadList2(string name)
+        {
+            string[] languages;
+            WordList result = null;
+
+            try
+            {
+                var dirInfo = Directory.CreateDirectory(folder);
+                string destFilePath = Path.Combine(dirInfo.FullName, $"{name}.dat");
+
+                if (!File.Exists(destFilePath))
+                {
+                    string sourcefilePath = $@"..\..\..\{name}.dat";
+
+                    try
+                    {
+                        File.Copy(sourcefilePath, destFilePath);
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+
+                        Console.WriteLine($"Error: The Word List {name}.dat does not exist inside {dirInfo.FullName} nor could be copied over from from {Directory.GetCurrentDirectory()}.");
+
+                        Console.ForegroundColor = ConsoleColor.Gray;
+
+                        return null;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        return null;
+                    }
+                }
+                using (var reader = new StreamReader(destFilePath))
+                {
+                    languages = reader.ReadLine().Split(';').Where(s => s != string.Empty).ToArray();
+
+                    result = new WordList(name, languages);
+
+                    string nextLine;
+
+                    while ((nextLine = reader.ReadLine()) != null)
+                    {
+                        result.Add(nextLine.Split(';').Where(s => s != string.Empty).ToArray());
+                    }
+                }
+
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return result;
         }
     }
 }

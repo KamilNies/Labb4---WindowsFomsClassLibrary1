@@ -10,7 +10,7 @@ namespace WinFormsApp1
     static class Program
     {
         public static WordList currentList;
-
+        
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

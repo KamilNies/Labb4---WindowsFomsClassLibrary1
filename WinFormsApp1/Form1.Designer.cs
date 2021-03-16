@@ -41,10 +41,10 @@ namespace WinFormsApp1
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.addButton = new System.Windows.Forms.Button();
+            this.addWordsTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,20 +58,17 @@ namespace WinFormsApp1
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.removeFromLangComboBox = new System.Windows.Forms.ComboBox();
+            this.removeWordsCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.removeWordsButton = new System.Windows.Forms.Button();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.Sort_Button = new System.Windows.Forms.Button();
+            this.SortListTxtBox = new System.Windows.Forms.TextBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -83,11 +80,19 @@ namespace WinFormsApp1
             this.panel13 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.outputTxtBox = new System.Windows.Forms.TextBox();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel20 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel3.SuspendLayout();
+            this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -97,6 +102,7 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel13.SuspendLayout();
+            this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -227,22 +233,22 @@ namespace WinFormsApp1
             this.label2.TabIndex = 0;
             this.label2.Text = "File name";
             // 
-            // panel3
+            // panel
             // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.panel18);
-            this.panel3.Location = new System.Drawing.Point(969, 400);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(315, 275);
-            this.panel3.TabIndex = 0;
+            this.panel.BackColor = System.Drawing.Color.Transparent;
+            this.panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel.BackgroundImage")));
+            this.panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel.Controls.Add(this.pictureBox2);
+            this.panel.Controls.Add(this.addButton);
+            this.panel.Controls.Add(this.addWordsTextBox);
+            this.panel.Controls.Add(this.panel4);
+            this.panel.Controls.Add(this.label3);
+            this.panel.Controls.Add(this.label4);
+            this.panel.Controls.Add(this.panel18);
+            this.panel.Location = new System.Drawing.Point(969, 400);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(315, 275);
+            this.panel.TabIndex = 0;
             // 
             // pictureBox2
             // 
@@ -254,33 +260,34 @@ namespace WinFormsApp1
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
-            // button2
+            // addButton
             // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(20, 205);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(275, 50);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
+            this.addButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("addButton.BackgroundImage")));
+            this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addButton.FlatAppearance.BorderSize = 0;
+            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.addButton.Location = new System.Drawing.Point(20, 205);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(275, 50);
+            this.addButton.TabIndex = 4;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // textBox2
+            // addWordsTextBox
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox2.Location = new System.Drawing.Point(20, 128);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(275, 16);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "Enter all the words you wish add here";
+            this.addWordsTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.addWordsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.addWordsTextBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addWordsTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.addWordsTextBox.Location = new System.Drawing.Point(20, 128);
+            this.addWordsTextBox.Name = "addWordsTextBox";
+            this.addWordsTextBox.Size = new System.Drawing.Size(275, 16);
+            this.addWordsTextBox.TabIndex = 2;
+            this.addWordsTextBox.Text = "Enter all the words you wish add here";
             // 
             // panel4
             // 
@@ -419,20 +426,42 @@ namespace WinFormsApp1
             this.panel7.BackColor = System.Drawing.Color.Transparent;
             this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel7.Controls.Add(this.removeFromLangComboBox);
+            this.panel7.Controls.Add(this.removeWordsCheckedListBox);
             this.panel7.Controls.Add(this.pictureBox4);
-            this.panel7.Controls.Add(this.button4);
-            this.panel7.Controls.Add(this.textBox8);
-            this.panel7.Controls.Add(this.textBox4);
-            this.panel7.Controls.Add(this.panel12);
-            this.panel7.Controls.Add(this.label12);
+            this.panel7.Controls.Add(this.removeWordsButton);
             this.panel7.Controls.Add(this.panel17);
-            this.panel7.Controls.Add(this.panel8);
             this.panel7.Controls.Add(this.label7);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Location = new System.Drawing.Point(648, 400);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(315, 275);
             this.panel7.TabIndex = 0;
+            // 
+            // removeFromLangComboBox
+            // 
+            this.removeFromLangComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.removeFromLangComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeFromLangComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.removeFromLangComboBox.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.removeFromLangComboBox.FormattingEnabled = true;
+            this.removeFromLangComboBox.Location = new System.Drawing.Point(20, 90);
+            this.removeFromLangComboBox.Name = "removeFromLangComboBox";
+            this.removeFromLangComboBox.Size = new System.Drawing.Size(274, 25);
+            this.removeFromLangComboBox.TabIndex = 7;
+            this.removeFromLangComboBox.SelectedIndexChanged += new System.EventHandler(this.removeFromLangComboBox_SelectedIndexChanged_1);
+            // 
+            // removeWordsCheckedListBox
+            // 
+            this.removeWordsCheckedListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.removeWordsCheckedListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.removeWordsCheckedListBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.removeWordsCheckedListBox.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.removeWordsCheckedListBox.FormattingEnabled = true;
+            this.removeWordsCheckedListBox.Location = new System.Drawing.Point(20, 120);
+            this.removeWordsCheckedListBox.Name = "removeWordsCheckedListBox";
+            this.removeWordsCheckedListBox.Size = new System.Drawing.Size(274, 74);
+            this.removeWordsCheckedListBox.TabIndex = 6;
             // 
             // pictureBox4
             // 
@@ -444,64 +473,22 @@ namespace WinFormsApp1
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
             // 
-            // button4
+            // removeWordsButton
             // 
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(20, 205);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(275, 50);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Remove";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox8.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox8.Location = new System.Drawing.Point(20, 164);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(276, 16);
-            this.textBox8.TabIndex = 2;
-            this.textBox8.Text = "Enter all the words you wish to remove ";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox4.Location = new System.Drawing.Point(20, 95);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(276, 16);
-            this.textBox4.TabIndex = 2;
-            this.textBox4.Text = "Enter language of choice";
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel12.Location = new System.Drawing.Point(20, 186);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(275, 1);
-            this.panel12.TabIndex = 1;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label12.Location = new System.Drawing.Point(17, 134);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 18);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Words";
+            this.removeWordsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeWordsButton.BackgroundImage")));
+            this.removeWordsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeWordsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.removeWordsButton.FlatAppearance.BorderSize = 0;
+            this.removeWordsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeWordsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.removeWordsButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.removeWordsButton.Location = new System.Drawing.Point(20, 205);
+            this.removeWordsButton.Name = "removeWordsButton";
+            this.removeWordsButton.Size = new System.Drawing.Size(275, 50);
+            this.removeWordsButton.TabIndex = 4;
+            this.removeWordsButton.Text = "Remove";
+            this.removeWordsButton.UseVisualStyleBackColor = true;
+            this.removeWordsButton.Click += new System.EventHandler(this.removeWordsButton_Click);
             // 
             // panel17
             // 
@@ -511,20 +498,12 @@ namespace WinFormsApp1
             this.panel17.Size = new System.Drawing.Size(315, 1);
             this.panel17.TabIndex = 1;
             // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel8.Location = new System.Drawing.Point(20, 117);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(275, 1);
-            this.panel8.TabIndex = 1;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(17, 65);
+            this.label7.Location = new System.Drawing.Point(17, 64);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 18);
             this.label7.TabIndex = 0;
@@ -547,8 +526,8 @@ namespace WinFormsApp1
             this.panel9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel9.BackgroundImage")));
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel9.Controls.Add(this.pictureBox5);
-            this.panel9.Controls.Add(this.button5);
-            this.panel9.Controls.Add(this.textBox5);
+            this.panel9.Controls.Add(this.Sort_Button);
+            this.panel9.Controls.Add(this.SortListTxtBox);
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Controls.Add(this.label9);
@@ -568,33 +547,34 @@ namespace WinFormsApp1
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
             // 
-            // button5
+            // Sort_Button
             // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(20, 205);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(275, 50);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Sort";
-            this.button5.UseVisualStyleBackColor = true;
+            this.Sort_Button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Sort_Button.BackgroundImage")));
+            this.Sort_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Sort_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Sort_Button.FlatAppearance.BorderSize = 0;
+            this.Sort_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Sort_Button.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Sort_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Sort_Button.Location = new System.Drawing.Point(20, 205);
+            this.Sort_Button.Name = "Sort_Button";
+            this.Sort_Button.Size = new System.Drawing.Size(275, 50);
+            this.Sort_Button.TabIndex = 4;
+            this.Sort_Button.Text = "Sort";
+            this.Sort_Button.UseVisualStyleBackColor = true;
+            this.Sort_Button.Click += new System.EventHandler(this.Sort_Button_Click);
             // 
-            // textBox5
+            // SortListTxtBox
             // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox5.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox5.Location = new System.Drawing.Point(20, 128);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(299, 16);
-            this.textBox5.TabIndex = 2;
-            this.textBox5.Text = "Enter language of choice";
+            this.SortListTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.SortListTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SortListTxtBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SortListTxtBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.SortListTxtBox.Location = new System.Drawing.Point(20, 128);
+            this.SortListTxtBox.Name = "SortListTxtBox";
+            this.SortListTxtBox.Size = new System.Drawing.Size(299, 16);
+            this.SortListTxtBox.TabIndex = 2;
+            this.SortListTxtBox.Text = "Enter language of choice";
             // 
             // panel16
             // 
@@ -723,28 +703,12 @@ namespace WinFormsApp1
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button8.Location = new System.Drawing.Point(6, 586);
+            this.button8.Location = new System.Drawing.Point(6, 605);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(315, 89);
+            this.button8.Size = new System.Drawing.Size(315, 70);
             this.button8.TabIndex = 5;
             this.button8.Text = "CLEAR";
             this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Firebrick;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button9.Location = new System.Drawing.Point(6, 400);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(315, 180);
-            this.button9.TabIndex = 6;
-            this.button9.Text = "Practice";
-            this.button9.UseVisualStyleBackColor = false;
             // 
             // outputTxtBox
             // 
@@ -755,9 +719,118 @@ namespace WinFormsApp1
             this.outputTxtBox.Multiline = true;
             this.outputTxtBox.Name = "outputTxtBox";
             this.outputTxtBox.ReadOnly = true;
-            this.outputTxtBox.Size = new System.Drawing.Size(615, 275);
+            this.outputTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.outputTxtBox.Size = new System.Drawing.Size(635, 275);
             this.outputTxtBox.TabIndex = 7;
             this.outputTxtBox.Text = resources.GetString("outputTxtBox.Text");
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.Firebrick;
+            this.panel19.Controls.Add(this.panel21);
+            this.panel19.Controls.Add(this.label15);
+            this.panel19.Controls.Add(this.button5);
+            this.panel19.Controls.Add(this.button3);
+            this.panel19.Controls.Add(this.button1);
+            this.panel19.Controls.Add(this.textBox1);
+            this.panel19.Controls.Add(this.label13);
+            this.panel19.Controls.Add(this.panel20);
+            this.panel19.Location = new System.Drawing.Point(6, 401);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(314, 198);
+            this.panel19.TabIndex = 8;
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel21.Location = new System.Drawing.Point(0, 51);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(315, 1);
+            this.panel21.TabIndex = 14;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label15.Location = new System.Drawing.Point(13, 12);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 25);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "Practice";
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.SystemColors.HighlightText;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button5.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.button5.Location = new System.Drawing.Point(13, 154);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(86, 31);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Exit";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.SystemColors.HighlightText;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button3.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.button3.Location = new System.Drawing.Point(113, 154);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 31);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "Start";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.HighlightText;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.button1.Location = new System.Drawing.Point(215, 154);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(86, 31);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Check";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Firebrick;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.textBox1.Location = new System.Drawing.Point(18, 116);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(299, 16);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.Text = "Enter word";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label13.Location = new System.Drawing.Point(15, 85);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(124, 18);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "Translate Word";
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel20.Location = new System.Drawing.Point(18, 138);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(275, 1);
+            this.panel20.TabIndex = 10;
             // 
             // Form1
             // 
@@ -766,26 +839,27 @@ namespace WinFormsApp1
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1291, 681);
+            this.Controls.Add(this.panel19);
             this.Controls.Add(this.outputTxtBox);
-            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.fileLoadedLabel);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel13);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panel.ResumeLayout(false);
+            this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -799,6 +873,8 @@ namespace WinFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -813,10 +889,10 @@ namespace WinFormsApp1
         private System.Windows.Forms.TextBox createListFileNameTxtBox;
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.TextBox addWordsTextBox;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -829,24 +905,19 @@ namespace WinFormsApp1
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button removeWordsButton;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button Sort_Button;
+        private System.Windows.Forms.TextBox SortListTxtBox;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox createListLanguageTxtBox;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Button exitApplicationButton;
         private System.Windows.Forms.Button minimizeApplicationButton;
@@ -859,8 +930,18 @@ namespace WinFormsApp1
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.TextBox outputTxtBox;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckedListBox removeWordsCheckedListBox;
+        private System.Windows.Forms.ComboBox removeFromLangComboBox;
     }
 }
 

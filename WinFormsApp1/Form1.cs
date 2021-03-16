@@ -36,6 +36,15 @@ namespace WinFormsApp1
                 {
                     fileLoadedLabel.ForeColor = Color.Green;
                     fileLoadedLabel.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Program.currentList.Count()} word objects";
+
+                    for (int i = 0; i < Program.currentList.Count(); i++)
+                    {
+                        removeWordsCheckedListBox.Items.Add(Program.currentList[i].Translations[0], false);
+                    }
+
+                    removeFromLangComboBox.Items.AddRange(Program.currentList.Languages);
+
+                    removeFromLangComboBox.SelectedIndex = 0;
                 }
             }
         }
@@ -90,6 +99,119 @@ namespace WinFormsApp1
             {
                 WindowState = FormWindowState.Minimized;
             }
+        }
+        private void Sort_Button_Click(object sender, EventArgs e)
+        {
+            if (SortListTxtBox.Text == "Enter language of choice" || SortListTxtBox.Text == "")
+            {
+                MessageBox.Show("Textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                int counter = 0;
+                for (int i = 0; i < Program.currentList.Languages.Length; i++)
+                {
+                    if (SortListTxtBox.Text == Program.currentList.Languages[i])
+                    {
+                        Action<string[]> action = new Action<string[]>(ShowTranslations);
+                        Program.currentList.List(i, action);
+                        counter++;
+                    }
+                }
+                if (counter == 0)
+                {
+                    MessageBox.Show("Could not find language!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ShowTranslations(string[] words)
+        {
+            string newLine = Environment.NewLine;
+            outputTxtBox.Text += newLine + string.Join(", ", words);
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            var wordList = Program.currentList;
+
+            if (wordList == null)
+            {
+                MessageBox.Show("Fail! You must first load a WordList object.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string[] addedTranslations = addWordsTextBox.Text
+                .Split(new char[] { ',', '.', ' ', '<', '>' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (addedTranslations.Length == 0 || addedTranslations.Length % wordList.Languages.Length != 0)
+            {
+                MessageBox.Show("Fail! You must enter at least one word for every language.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int wordCount = addedTranslations.Length / wordList.Languages.Length;
+
+            for (var i = 0; i < wordCount; i++)
+            {
+                wordList.Add(addedTranslations.Skip(i * wordList.Languages.Length).Take(wordList.Languages.Length).ToArray());
+            }
+
+            wordList.Save();
+
+            outputTxtBox.Text = "Words were successfully added to the list!";
+
+            UpdateRemoveWordsCheckedListBox();
+        }
+        private void UpdateRemoveWordsCheckedListBox()
+        {
+            removeWordsCheckedListBox.Items.Clear();
+
+            if (removeFromLangComboBox.SelectedIndex == -1)
+                removeFromLangComboBox.SelectedIndex = 0;
+
+            for (int i = 0; i < Program.currentList.Count(); i++)
+            {
+                removeWordsCheckedListBox.Items.Add(Program.currentList[i].Translations[removeFromLangComboBox.SelectedIndex], false);
+            }
+        }
+
+        public void RemoveWords(object sender, EventArgs e)
+        {
+            var wordList = Program.currentList;
+
+            if (wordList == null)
+            {
+                MessageBox.Show("Fail! You must first load a Word List.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string language = removeFromLangComboBox.Text;
+            var wordItemsToBeRemoved = removeWordsCheckedListBox.CheckedItems;
+
+            if (wordItemsToBeRemoved.Count == 0)
+            {
+                MessageBox.Show("Fail! You must enter at least one word.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            while (wordItemsToBeRemoved.Count > 0)
+            {
+                wordList.Remove(removeFromLangComboBox.SelectedIndex, wordItemsToBeRemoved[0].ToString());
+                removeWordsCheckedListBox.Items.Remove(wordItemsToBeRemoved[0]);
+            }
+
+            wordList.Save();
+            //removeWordsErrorLabel.Text = "Words were successfully removed!";
+        }
+
+        private void removeWordsButton_Click(object sender, EventArgs e)
+        {
+            RemoveWords(sender, e);
+        }
+
+        private void removeFromLangComboBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            UpdateRemoveWordsCheckedListBox();
         }
     }
 }
