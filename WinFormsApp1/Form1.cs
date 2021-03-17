@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,59 @@ namespace WinFormsApp1
         public Form1()
         {
             InitializeComponent();
+
+            // Set Button BG Images
+            //**********************************************************************************************************
+            loadButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
+
+            createButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
+
+            addButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
+
+            removeWordsButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
+
+            Sort_Button.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
+
+            //**********************************************************************************************************
+            // Set Panel BG Images
+            //**********************************************************************************************************
+            loadPanel.BackgroundImage = LoadImage("beveledBackgroundPanelNewe.png");
+
+            createPanel.BackgroundImage = LoadImage("beveledBackgroundPanelNewe.png");
+
+            sortPanel.BackgroundImage = LoadImage("beveledBackgroundPanelNewe.png");
+
+            addPanel.BackgroundImage = LoadImage("beveledBackgroundPanelNewe.png");
+
+            removePanel.BackgroundImage = LoadImage("beveledBackgroundPanelNewe.png");
+
+            loadPanel.BackgroundImage = LoadImage("beveledBackgroundPanelNewe.png");
+            //**********************************************************************************************************
+            // Set Picture Box Images
+            //**********************************************************************************************************
+            loadPictureBox.Image = LoadImage("openWhite.png");
+
+            createPictureBox.Image = LoadImage("newlistWhile.png");
+
+            sortPictureBox.Image = LoadImage("sortWhite.png");
+
+            removePictureBox.Image = LoadImage("removeWhite.png");
+
+            addPictureBox.Image = LoadImage("addWhite.png");
+
+            githubPictureBox.Image = LoadImage("github.png");
+            //**********************************************************************************************************
+            // Set Form1 BG Image
+            //**********************************************************************************************************
+            this.BackgroundImage = LoadImage("background gradient.png");
+
+            Image LoadImage(string fileName)
+            {
+                return Image.FromFile(Path.Combine(Directory.GetCurrentDirectory(), "Images", fileName));
+            }
         }
+
+        
 
         private void loadButton_Click(object sender, EventArgs e)
         {
