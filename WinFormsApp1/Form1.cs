@@ -85,6 +85,10 @@ namespace WinFormsApp1
 
                 outputTxtBox.Text = string.Empty;
                 outputTxtBox.Text = $"{Program.currentList.Name}.dat successfully created.";
+
+                removeFromLangComboBox.Items.AddRange(Program.currentList.Languages);
+
+                removeFromLangComboBox.SelectedIndex = 0;
             }
         }
 
@@ -109,9 +113,10 @@ namespace WinFormsApp1
             else
             {
                 int counter = 0;
+                outputTxtBox.Text = string.Join(", ", Program.currentList.Languages);
                 for (int i = 0; i < Program.currentList.Languages.Length; i++)
                 {
-                    if (SortListTxtBox.Text == Program.currentList.Languages[i])
+                    if (SortListTxtBox.Text.ToLower() == Program.currentList.Languages[i])
                     {
                         Action<string[]> action = new Action<string[]>(ShowTranslations);
                         Program.currentList.List(i, action);
@@ -140,7 +145,7 @@ namespace WinFormsApp1
                 MessageBox.Show("Fail! You must first load a WordList object.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string[] addedTranslations = addWordsTextBox.Text
+            string[] addedTranslations = addWordsTextBox.Text.ToLower()
                 .Split(new char[] { ',', '.', ' ', '<', '>' }, StringSplitOptions.RemoveEmptyEntries);
 
             if (addedTranslations.Length == 0 || addedTranslations.Length % wordList.Languages.Length != 0)
@@ -181,7 +186,7 @@ namespace WinFormsApp1
 
             if (wordList == null)
             {
-                MessageBox.Show("Fail! You must first load a Word List.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Fail! You must first load a Wordlist.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
