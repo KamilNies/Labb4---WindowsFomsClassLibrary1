@@ -68,9 +68,9 @@ namespace WinFormsApp1
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.sortPanel = new System.Windows.Forms.Panel();
+            this.sortComboBox = new System.Windows.Forms.ComboBox();
             this.sortPictureBox = new System.Windows.Forms.PictureBox();
             this.Sort_Button = new System.Windows.Forms.Button();
-            this.SortListTxtBox = new System.Windows.Forms.TextBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -466,10 +466,10 @@ namespace WinFormsApp1
             this.removeFromLangComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removeFromLangComboBox.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.removeFromLangComboBox.FormattingEnabled = true;
-            this.removeFromLangComboBox.Location = new System.Drawing.Point(23, 120);
+            this.removeFromLangComboBox.Location = new System.Drawing.Point(23, 116);
             this.removeFromLangComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.removeFromLangComboBox.Name = "removeFromLangComboBox";
-            this.removeFromLangComboBox.Size = new System.Drawing.Size(313, 29);
+            this.removeFromLangComboBox.Size = new System.Drawing.Size(315, 29);
             this.removeFromLangComboBox.TabIndex = 7;
             this.removeFromLangComboBox.SelectedIndexChanged += new System.EventHandler(this.removeFromLangComboBox_SelectedIndexChanged_1);
             this.removeFromLangComboBox.Enter += new System.EventHandler(this.control_Enter);
@@ -551,9 +551,9 @@ namespace WinFormsApp1
             // 
             this.sortPanel.BackColor = System.Drawing.Color.Transparent;
             this.sortPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.sortPanel.Controls.Add(this.sortComboBox);
             this.sortPanel.Controls.Add(this.sortPictureBox);
             this.sortPanel.Controls.Add(this.Sort_Button);
-            this.sortPanel.Controls.Add(this.SortListTxtBox);
             this.sortPanel.Controls.Add(this.panel16);
             this.sortPanel.Controls.Add(this.panel10);
             this.sortPanel.Controls.Add(this.label9);
@@ -563,6 +563,19 @@ namespace WinFormsApp1
             this.sortPanel.Name = "sortPanel";
             this.sortPanel.Size = new System.Drawing.Size(360, 367);
             this.sortPanel.TabIndex = 0;
+            // 
+            // sortComboBox
+            // 
+            this.sortComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.sortComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sortComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.sortComboBox.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.sortComboBox.FormattingEnabled = true;
+            this.sortComboBox.Location = new System.Drawing.Point(23, 174);
+            this.sortComboBox.Name = "sortComboBox";
+            this.sortComboBox.Size = new System.Drawing.Size(314, 29);
+            this.sortComboBox.TabIndex = 6;
+            this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.sortComboBox_SelectedIndexChanged);
             // 
             // sortPictureBox
             // 
@@ -592,20 +605,6 @@ namespace WinFormsApp1
             this.Sort_Button.UseVisualStyleBackColor = true;
             this.Sort_Button.Click += new System.EventHandler(this.Sort_Button_Click);
             // 
-            // SortListTxtBox
-            // 
-            this.SortListTxtBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.SortListTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SortListTxtBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SortListTxtBox.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.SortListTxtBox.Location = new System.Drawing.Point(23, 171);
-            this.SortListTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SortListTxtBox.Name = "SortListTxtBox";
-            this.SortListTxtBox.Size = new System.Drawing.Size(342, 20);
-            this.SortListTxtBox.TabIndex = 2;
-            this.SortListTxtBox.Text = "Enter language of choice";
-            this.SortListTxtBox.Enter += new System.EventHandler(this.control_Enter);
-            // 
             // panel16
             // 
             this.panel16.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -629,7 +628,7 @@ namespace WinFormsApp1
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(19, 129);
+            this.label9.Location = new System.Drawing.Point(23, 141);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(103, 24);
             this.label9.TabIndex = 0;
@@ -978,7 +977,6 @@ namespace WinFormsApp1
         private System.Windows.Forms.Panel sortPanel;
         private System.Windows.Forms.PictureBox sortPictureBox;
         private System.Windows.Forms.Button Sort_Button;
-        private System.Windows.Forms.TextBox SortListTxtBox;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -1011,6 +1009,7 @@ namespace WinFormsApp1
         private System.Windows.Forms.ComboBox removeFromLangComboBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button ar;
+        private System.Windows.Forms.ComboBox sortComboBox;
     }
 }
 

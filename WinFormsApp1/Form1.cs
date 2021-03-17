@@ -17,7 +17,6 @@ namespace WinFormsApp1
         private string loadText;
         private string createFileNameText;
         private string createLanguageText;
-        private string sortText;
         private string addText;
         private string practiceText;
 
@@ -28,7 +27,6 @@ namespace WinFormsApp1
             loadText = loadFileNameTxtBox.Text;
             createFileNameText = createListFileNameTxtBox.Text;
             createLanguageText = createListLanguageTxtBox.Text;
-            sortText = SortListTxtBox.Text;
             addText = addWordsTextBox.Text;
             practiceText = practiceTxtBox.Text;
 
@@ -116,6 +114,10 @@ namespace WinFormsApp1
 
                     removeFromLangComboBox.SelectedIndex = 0;
 
+                    sortComboBox.Items.Clear();
+                    sortComboBox.Items.AddRange(Program.currentList.Languages);
+                    sortComboBox.SelectedIndex = 0;
+
                     outputTxtBox.Text = $"{Program.currentList.Name}.dat loaded. Contains: " + Environment.NewLine + Environment.NewLine;
                     outputTxtBox.Text += string.Join(", ", Program.currentList.Languages);
 
@@ -162,9 +164,12 @@ namespace WinFormsApp1
                 outputTxtBox.Text = $"{Program.currentList.Name}.dat successfully created.";
 
                 removeFromLangComboBox.Items.AddRange(Program.currentList.Languages);
-
                 removeFromLangComboBox.SelectedIndex = 0;
+
+                sortComboBox.Items.AddRange(Program.currentList.Languages);
+                sortComboBox.SelectedIndex = 0;
             }
+
         }
 
         private void exitApplicationButton_Click(object sender, EventArgs e)
@@ -181,28 +186,10 @@ namespace WinFormsApp1
         }
         private void Sort_Button_Click(object sender, EventArgs e)
         {
-            if (SortListTxtBox.Text == "Enter language of choice" || SortListTxtBox.Text == "")
-            {
-                MessageBox.Show("Textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                int counter = 0;
-                outputTxtBox.Text = string.Join(", ", Program.currentList.Languages);
-                for (int i = 0; i < Program.currentList.Languages.Length; i++)
-                {
-                    if (SortListTxtBox.Text.ToLower() == Program.currentList.Languages[i])
-                    {
-                        Action<string[]> action = new Action<string[]>(ShowTranslations);
-                        Program.currentList.List(i, action);
-                        counter++;
-                    }
-                }
-                if (counter == 0)
-                {
-                    MessageBox.Show("Could not find language!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            outputTxtBox.Text = $"Sorting words in {Program.currentList.Name}.dat based on {Program.currentList.Languages[sortComboBox.SelectedIndex]} translations:{Environment.NewLine}{Environment.NewLine}";
+            outputTxtBox.Text += string.Join(", ", Program.currentList.Languages);
+            Action<string[]> action = new Action<string[]>(ShowTranslations);
+            Program.currentList.List(sortComboBox.SelectedIndex, action);
         }
 
         private void ShowTranslations(string[] words)
@@ -414,7 +401,7 @@ namespace WinFormsApp1
             removeWordsButton.Enabled = true;
             showWords.Text = "Word";
             Sort_Button.Enabled = true;
-            SortListTxtBox.Text = "Enter language of choice";
+            sortComboBox.Items.Clear();
             startPractice.Enabled = true;
 
         }
@@ -430,9 +417,6 @@ namespace WinFormsApp1
             else if (createListLanguageTxtBox.Text == string.Empty)
                 createListLanguageTxtBox.Text = createLanguageText;
 
-            else if (SortListTxtBox.Text == string.Empty)
-                SortListTxtBox.Text = sortText;
-
             else if (addWordsTextBox.Text == string.Empty)
                 addWordsTextBox.Text = addText;
 
@@ -441,6 +425,11 @@ namespace WinFormsApp1
 
             if (sender is TextBox && sender != outputTxtBox)
                 (sender as TextBox).Clear();
+        }
+
+        private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
