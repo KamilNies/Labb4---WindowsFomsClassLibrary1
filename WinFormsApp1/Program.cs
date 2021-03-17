@@ -10,6 +10,9 @@ namespace WinFormsApp1
     static class Program
     {
         public static WordList currentList;
+        public static Word rngWord;
+        public static int numerator = 0;
+        public static int denominator = 0;
         
         /// <summary>
         ///  The main entry point for the application.

@@ -73,7 +73,7 @@ namespace WinFormsApp1
 
         private void loadButton_Click(object sender, EventArgs e)
         {
-            if (loadFileNameTxtBox.Text == "Enter file name with .dat extension" || loadFileNameTxtBox.Text == string.Empty)
+            if (loadFileNameTxtBox.Text == "Enter file name without .dat extension" || loadFileNameTxtBox.Text == string.Empty)
             {
                 MessageBox.Show("Textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -102,7 +102,7 @@ namespace WinFormsApp1
 
                     removeFromLangComboBox.SelectedIndex = 0;
 
-                    outputTxtBox.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Program.currentList.Count()} word objects:" + Environment.NewLine + Environment.NewLine;
+                    outputTxtBox.Text = $"{Program.currentList.Name}.dat loaded. Contains: " + Environment.NewLine + Environment.NewLine;
                     outputTxtBox.Text += string.Join(", ", Program.currentList.Languages);
 
                     
@@ -118,7 +118,7 @@ namespace WinFormsApp1
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            if (createListFileNameTxtBox.Text == "Enter file name with .dat extension" || createListFileNameTxtBox.Text == string.Empty)
+            if (createListFileNameTxtBox.Text == "Enter file name without .dat extension" || createListFileNameTxtBox.Text == string.Empty)
             {
                 MessageBox.Show("File textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -206,6 +206,11 @@ namespace WinFormsApp1
         {
             var wordList = Program.currentList;
 
+            if (addWordsTextBox.Text == "Enter all the words you wish to add here" || createListFileNameTxtBox.Text == string.Empty)
+            {
+                MessageBox.Show("File textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             if (wordList == null)
             {
                 MessageBox.Show("Fail! You must first load a WordList object.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -291,5 +296,120 @@ namespace WinFormsApp1
         {
             UpdateRemoveWordsCheckedListBox();
         }
+
+        private void startPractice_Click(object sender, EventArgs e)
+        {
+            outputTxtBox.Text = "Test has started..." + Environment.NewLine + Environment.NewLine;
+            if (Program.currentList == null)
+            {
+                MessageBox.Show("You must load a list before you start practice.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            startPractice.Enabled = false;
+            removeWordsCheckedListBox.Visible = false;
+            exitPractice.Enabled = true;
+            checkPracticeWord.Enabled = true;
+            Sort_Button.Enabled = false;
+            removeWordsButton.Enabled = false;
+            addButton.Enabled = false;
+            loadButton.Enabled = false;
+            createButton.Enabled = false;
+            clearButton.Enabled = false;
+
+            Program.rngWord = Program.currentList.GetWordToPractice();
+            string toLanguage = Program.currentList.Languages[Program.rngWord.ToLanguage];
+            string fromLanguage = Program.rngWord.Translations[Program.rngWord.FromLanguage];
+            showWords.Text = $"\"{fromLanguage}\" to {toLanguage}";
+        }
+
+        private void checkPracticeWord_Click(object sender, EventArgs e)
+        {
+            if (practiceTxtBox.Text == "Enter word" || practiceTxtBox.Text == string.Empty)
+            {
+                MessageBox.Show("Textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (practiceTxtBox.Text.ToLower() == Program.rngWord.Translations[Program.rngWord.ToLanguage])
+            {
+                practicePanel.BackColor = Color.FromArgb(34, 139, 34);
+                practiceTxtBox.BackColor = Color.FromArgb(34, 139, 34);
+                outputTxtBox.Text += "Correct!" + Environment.NewLine;
+
+                Program.rngWord = Program.currentList.GetWordToPractice();
+                string toLanguage = Program.currentList.Languages[Program.rngWord.ToLanguage];
+                string fromLanguage = Program.rngWord.Translations[Program.rngWord.FromLanguage];
+                showWords.Text = $"\"{fromLanguage}\" to {toLanguage}";
+                practiceTxtBox.Text = "";
+                Program.numerator++;
+                Program.denominator++;
+
+            }
+            else
+            {
+                practicePanel.BackColor = Color.FromArgb(178, 34, 34);
+                practiceTxtBox.BackColor = Color.FromArgb(178, 34, 34);
+                outputTxtBox.Text += $"Incorrect! The correct word was: {Program.rngWord.Translations[Program.rngWord.ToLanguage]}" + Environment.NewLine;
+
+                Program.rngWord = Program.currentList.GetWordToPractice();
+                string toLanguage = Program.currentList.Languages[Program.rngWord.ToLanguage];
+                string fromLanguage = Program.rngWord.Translations[Program.rngWord.FromLanguage];
+                showWords.Text = $"\"{fromLanguage}\" to {toLanguage}";
+                practiceTxtBox.Text = "";
+                Program.denominator++;
+            }
+        }
+
+        private void exitPractice_Click(object sender, EventArgs e)
+        {
+            startPractice.Enabled = true;
+            removeWordsCheckedListBox.Visible = true;
+            exitPractice.Enabled = false;
+            checkPracticeWord.Enabled = false;
+            Sort_Button.Enabled = true;
+            removeWordsButton.Enabled = true;
+            addButton.Enabled = true;
+            loadButton.Enabled = true;
+            createButton.Enabled = true;
+            clearButton.Enabled = true;
+
+            outputTxtBox.Text += Environment.NewLine + $"You got {Program.numerator}/{Program.denominator} correct!";
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            Program.currentList = null;
+            Program.currentList = null;
+            Program.rngWord = null;
+            Program.numerator = 0;
+            Program.denominator = 0;
+
+
+            addButton.Enabled = true;
+            addWordsTextBox.Text = "Enter all the words you wish to add here";
+            checkPracticeWord.Enabled = false;
+            clearButton.Enabled = true;
+            createButton.Enabled = true;
+            createListFileNameTxtBox.Text = "Enter file name without .dat extension";
+            createListLanguageTxtBox.Text = "Enter all languages separated by space";
+            exitPractice.Enabled = false;
+            fileLoadedLabel.Text = "No list loaded";
+            fileLoadedLabel.ForeColor = Color.Black;
+            loadButton.Enabled = true;
+            loadFileNameTxtBox.Text = "Enter file name without .dat extension";
+            outputTxtBox.Text = ""; //TODO change this
+            practicePanel.BackColor = Color.FromArgb(178, 34, 34);
+            practiceTxtBox.Text = "Enter word";
+            practiceTxtBox.BackColor = Color.FromArgb(178, 34, 34);
+            removeWordsButton.Enabled = true;
+            showWords.Text = "Word";
+            Sort_Button.Enabled = true;
+            SortListTxtBox.Text = "Enter language of choice";
+            startPractice.Enabled = true;
+
+        }
+
+       
     }
 }
