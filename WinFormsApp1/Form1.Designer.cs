@@ -637,6 +637,7 @@ namespace WinFormsApp1
             this.exitApplicationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.exitApplicationButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitApplicationButton.FlatAppearance.BorderSize = 0;
+            this.exitApplicationButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.exitApplicationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitApplicationButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.exitApplicationButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -653,6 +654,7 @@ namespace WinFormsApp1
             this.minimizeApplicationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.minimizeApplicationButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizeApplicationButton.FlatAppearance.BorderSize = 0;
+            this.minimizeApplicationButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.minimizeApplicationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeApplicationButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.minimizeApplicationButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
