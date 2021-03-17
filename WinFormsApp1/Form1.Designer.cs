@@ -1,4 +1,6 @@
 ﻿
+using System.IO;
+
 namespace WinFormsApp1
 {
     partial class Form1
@@ -108,7 +110,6 @@ namespace WinFormsApp1
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.createButton);
@@ -127,7 +128,6 @@ namespace WinFormsApp1
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(236, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(59, 59);
@@ -137,7 +137,6 @@ namespace WinFormsApp1
             // 
             // createButton
             // 
-            this.createButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("createButton.BackgroundImage")));
             this.createButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.createButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.createButton.FlatAppearance.BorderSize = 0;
@@ -237,7 +236,6 @@ namespace WinFormsApp1
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.Transparent;
-            this.panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel.BackgroundImage")));
             this.panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel.Controls.Add(this.pictureBox2);
             this.panel.Controls.Add(this.addButton);
@@ -253,7 +251,6 @@ namespace WinFormsApp1
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(236, 22);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(59, 60);
@@ -263,7 +260,6 @@ namespace WinFormsApp1
             // 
             // addButton
             // 
-            this.addButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("addButton.BackgroundImage")));
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addButton.FlatAppearance.BorderSize = 0;
@@ -332,7 +328,6 @@ namespace WinFormsApp1
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Transparent;
-            this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel5.Controls.Add(this.pictureBox3);
             this.panel5.Controls.Add(this.loadButton);
@@ -348,7 +343,6 @@ namespace WinFormsApp1
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(235, 16);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(60, 62);
@@ -358,7 +352,6 @@ namespace WinFormsApp1
             // 
             // loadButton
             // 
-            this.loadButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("loadButton.BackgroundImage")));
             this.loadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loadButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loadButton.FlatAppearance.BorderSize = 0;
@@ -427,7 +420,6 @@ namespace WinFormsApp1
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.Transparent;
-            this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel7.Controls.Add(this.removeFromLangComboBox);
             this.panel7.Controls.Add(this.removeWordsCheckedListBox);
@@ -468,7 +460,6 @@ namespace WinFormsApp1
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(235, 22);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(59, 59);
@@ -478,7 +469,6 @@ namespace WinFormsApp1
             // 
             // removeWordsButton
             // 
-            this.removeWordsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("removeWordsButton.BackgroundImage")));
             this.removeWordsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.removeWordsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeWordsButton.FlatAppearance.BorderSize = 0;
@@ -527,7 +517,6 @@ namespace WinFormsApp1
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.Transparent;
-            this.panel9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel9.BackgroundImage")));
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel9.Controls.Add(this.pictureBox5);
             this.panel9.Controls.Add(this.Sort_Button);
@@ -543,7 +532,6 @@ namespace WinFormsApp1
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(236, 23);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(59, 59);
@@ -553,7 +541,6 @@ namespace WinFormsApp1
             // 
             // Sort_Button
             // 
-            this.Sort_Button.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Sort_Button.BackgroundImage")));
             this.Sort_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Sort_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Sort_Button.FlatAppearance.BorderSize = 0;
@@ -623,7 +610,6 @@ namespace WinFormsApp1
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
             this.pictureBox6.Location = new System.Drawing.Point(1219, 50);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(65, 66);
