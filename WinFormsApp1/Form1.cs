@@ -105,13 +105,8 @@ namespace WinFormsApp1
                     outputTxtBox.Text = $"{Program.currentList.Name}.dat loaded. Contains: " + Environment.NewLine + Environment.NewLine;
                     outputTxtBox.Text += string.Join(", ", Program.currentList.Languages);
 
-                    
-                    for (int i = 0; i < Program.currentList.Languages.Length; i++)
-                    {
-                        Action<string[]> action = new Action<string[]>(ShowTranslations);
-                        Program.currentList.GetCurrentList(action);
-                    }
-                    
+                    Action<string[]> action = new Action<string[]>(ShowTranslations);
+                    Program.currentList.GetCurrentList(action);
                 }
             }
         }
