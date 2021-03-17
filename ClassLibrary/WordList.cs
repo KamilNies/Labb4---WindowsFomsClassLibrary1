@@ -132,6 +132,15 @@ namespace ClassLibrary
                 showTranslations?.Invoke(word.Translations);
             }
         }
+
+        public void GetCurrentList(Action<string[]> showTranslations)
+        {
+            foreach (var word in Words)
+            {
+                showTranslations?.Invoke(word.Translations);
+            }
+        }
+    
         public Word GetWordToPractice()
         {
             Random rng = new Random();
