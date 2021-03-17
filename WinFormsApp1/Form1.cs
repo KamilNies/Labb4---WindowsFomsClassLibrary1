@@ -192,28 +192,7 @@ namespace WinFormsApp1
             outputTxtBox.Text += string.Join(", ", Program.currentList.Languages);
             Action<string[]> action = new Action<string[]>(ShowTranslations);
             Program.currentList.List(sortComboBox.SelectedIndex, action);
-            if (SortListTxtBox.Text == "Enter language of choice" || SortListTxtBox.Text == "")
-            {
-                MessageBox.Show("Textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                int counter = 0;
-                for (int i = 0; i < Program.currentList.Languages.Length; i++)
-                {
-                    if (SortListTxtBox.Text.ToLower() == Program.currentList.Languages[i])
-                    {
-                        outputTxtBox.Text = string.Join(", ", Program.currentList.Languages);
-                        Action<string[]> action = new Action<string[]>(ShowTranslations);
-                        Program.currentList.List(i, action);
-                        counter++;
-                    }
-                }
-                if (counter == 0)
-                {
-                    MessageBox.Show("Could not find language!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            
         }
 
         private void ShowTranslations(string[] words)
@@ -445,6 +424,7 @@ namespace WinFormsApp1
             removeWordsButton.Enabled = true;
             showWords.Text = "Word";
             Sort_Button.Enabled = true;
+            sortComboBox.Text = string.Empty;
             sortComboBox.Items.Clear();
             startPractice.Enabled = true;
             removeFromLangComboBox.Items.Clear();

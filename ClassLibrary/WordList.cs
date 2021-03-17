@@ -10,7 +10,7 @@ namespace ClassLibrary
     public class WordList
     {
         //Read-only field
-        public static readonly string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Labb4WorkShopApp"); //TODO: Change Labb4WorkShopApp
+        public static readonly string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Labb4WinForm_Tim_Markus_Kamil"); //TODO: Change Labb4WorkShopApp
 
         //Auto-implemented properties
         public string Name { get; }
