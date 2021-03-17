@@ -83,7 +83,6 @@ namespace WinFormsApp1
                     fileLoadedLabel.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Program.currentList.Count()} word objects";
                 }
 
-                outputTxtBox.Text = string.Empty;
                 outputTxtBox.Text = $"{Program.currentList.Name}.dat successfully created.";
 
                 removeFromLangComboBox.Items.AddRange(Program.currentList.Languages);
@@ -166,6 +165,9 @@ namespace WinFormsApp1
             outputTxtBox.Text = "Words were successfully added to the list!";
 
             UpdateRemoveWordsCheckedListBox();
+
+            fileLoadedLabel.ForeColor = Color.Green;
+            fileLoadedLabel.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Program.currentList.Count()} word objects";
         }
         private void UpdateRemoveWordsCheckedListBox()
         {
@@ -206,7 +208,11 @@ namespace WinFormsApp1
             }
 
             wordList.Save();
-            //removeWordsErrorLabel.Text = "Words were successfully removed!";
+
+            fileLoadedLabel.ForeColor = Color.Green;
+            fileLoadedLabel.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Program.currentList.Count()} word objects";
+
+            outputTxtBox.Text = "Words were successfully removed!";
         }
 
         private void removeWordsButton_Click(object sender, EventArgs e)
