@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,9 +34,9 @@ namespace WinFormsApp1
             addText = addWordsTextBox.Text;
             practiceText = practiceTxtBox.Text;
 
-        // Set Button BG Images
-        //**********************************************************************************************************
-        loadButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
+            // Set Button BG Images
+            //**********************************************************************************************************
+            loadButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
 
             createButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
 
@@ -83,7 +85,7 @@ namespace WinFormsApp1
             }
         }
 
-        
+
 
         private void loadButton_Click(object sender, EventArgs e)
         {
@@ -188,11 +190,11 @@ namespace WinFormsApp1
             else
             {
                 int counter = 0;
-                outputTxtBox.Text = string.Join(", ", Program.currentList.Languages);
                 for (int i = 0; i < Program.currentList.Languages.Length; i++)
                 {
                     if (SortListTxtBox.Text.ToLower() == Program.currentList.Languages[i])
                     {
+                        outputTxtBox.Text = string.Join(", ", Program.currentList.Languages);
                         Action<string[]> action = new Action<string[]>(ShowTranslations);
                         Program.currentList.List(i, action);
                         counter++;
@@ -308,12 +310,16 @@ namespace WinFormsApp1
 
         private void startPractice_Click(object sender, EventArgs e)
         {
-            outputTxtBox.Text = "Test has started..." + Environment.NewLine + Environment.NewLine;
             if (Program.currentList == null)
             {
                 MessageBox.Show("You must load a list before you start practice.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            Program.numerator = 0;
+            Program.denominator = 0;
+
+            outputTxtBox.Text = "Test has started..." + Environment.NewLine + Environment.NewLine;
 
             startPractice.Enabled = false;
             removeWordsCheckedListBox.Visible = false;
@@ -350,7 +356,6 @@ namespace WinFormsApp1
                 string toLanguage = Program.currentList.Languages[Program.rngWord.ToLanguage];
                 string fromLanguage = Program.rngWord.Translations[Program.rngWord.FromLanguage];
                 showWords.Text = $"\"{fromLanguage}\" to {toLanguage}";
-                practiceTxtBox.Text = "";
                 Program.numerator++;
                 Program.denominator++;
 
@@ -359,7 +364,7 @@ namespace WinFormsApp1
             {
                 practicePanel.BackColor = Color.FromArgb(178, 34, 34);
                 practiceTxtBox.BackColor = Color.FromArgb(178, 34, 34);
-                outputTxtBox.Text += $"Incorrect! The correct word was: {Program.rngWord.Translations[Program.rngWord.ToLanguage]}" + Environment.NewLine;
+                outputTxtBox.Text += $"Incorrect. The correct word was: {Program.rngWord.Translations[Program.rngWord.ToLanguage]}" + Environment.NewLine;
 
                 Program.rngWord = Program.currentList.GetWordToPractice();
                 string toLanguage = Program.currentList.Languages[Program.rngWord.ToLanguage];
@@ -383,7 +388,18 @@ namespace WinFormsApp1
             createButton.Enabled = true;
             clearButton.Enabled = true;
 
-            outputTxtBox.Text += Environment.NewLine + $"You got {Program.numerator}/{Program.denominator} correct!";
+            if (Program.denominator != 0 && Program.numerator != Program.denominator)
+            {
+                outputTxtBox.Text += Environment.NewLine + $"You got {Program.numerator}/{Program.denominator} correct";
+            }
+            else if (Program.numerator != 0 && Program.denominator == Program.numerator)
+            {
+                outputTxtBox.Text += Environment.NewLine + $"You got {Program.numerator}/{Program.denominator} correct!";
+            }
+            else
+            {
+                outputTxtBox.Text += Environment.NewLine + "No words were guessed";
+            }
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -407,7 +423,13 @@ namespace WinFormsApp1
             fileLoadedLabel.ForeColor = Color.Black;
             loadButton.Enabled = true;
             loadFileNameTxtBox.Text = "Enter file name without .dat extension";
-            outputTxtBox.Text = ""; //TODO change this
+            outputTxtBox.Text = "Welcome. Start by loading a list using the \"Load List\" form on the right. " +
+                "Once the list is loaded, the \"No list loaded\" label above will change color. " +
+                "Green indicates that a .dat file has been loaded and red indicated that no file has been found."
+                + Environment.NewLine + Environment.NewLine + "When using the \"Add Words\" form, all the words need to " +
+                "to be added at the same time (separated by a blank space). You may add multiple words at the same time. " +
+                "However, these must be added in pairs or sets. For example, if a list contains 2 languages, " +
+                "you may not add 3 words.";
             practicePanel.BackColor = Color.FromArgb(178, 34, 34);
             practiceTxtBox.Text = "Enter word";
             practiceTxtBox.BackColor = Color.FromArgb(178, 34, 34);
@@ -416,7 +438,9 @@ namespace WinFormsApp1
             Sort_Button.Enabled = true;
             SortListTxtBox.Text = "Enter language of choice";
             startPractice.Enabled = true;
-
+            removeFromLangComboBox.Items.Clear();
+            removeFromLangComboBox.Text = string.Empty;
+            removeWordsCheckedListBox.Items.Clear();
         }
 
         private void control_Enter(object sender, EventArgs e)
@@ -441,6 +465,36 @@ namespace WinFormsApp1
 
             if (sender is TextBox && sender != outputTxtBox)
                 (sender as TextBox).Clear();
+        }
+
+        private void githubPictureBox_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string url = @"https://github.com/KamilNies/WindowsFomsClassLibrary1";
+                Process.Start(url);
+            }
+            catch
+            {
+                string url = @"https://github.com/KamilNies/WindowsFomsClassLibrary1";
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
     }
 }
