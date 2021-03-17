@@ -14,13 +14,27 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
+        private string loadText;
+        private string createFileNameText;
+        private string createLanguageText;
+        private string sortText;
+        private string addText;
+        private string practiceText;
+
         public Form1()
         {
             InitializeComponent();
 
-            // Set Button BG Images
-            //**********************************************************************************************************
-            loadButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
+            loadText = loadFileNameTxtBox.Text;
+            createFileNameText = createListFileNameTxtBox.Text;
+            createLanguageText = createListLanguageTxtBox.Text;
+            sortText = SortListTxtBox.Text;
+            addText = addWordsTextBox.Text;
+            practiceText = practiceTxtBox.Text;
+
+        // Set Button BG Images
+        //**********************************************************************************************************
+        loadButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
 
             createButton.BackgroundImage = LoadImage("formButtonBackgroundSmaller.png");
 
@@ -405,6 +419,28 @@ namespace WinFormsApp1
 
         }
 
-       
+        private void control_Enter(object sender, EventArgs e)
+        {
+            if (loadFileNameTxtBox.Text == string.Empty)
+                loadFileNameTxtBox.Text = loadText;
+
+            else if (createListFileNameTxtBox.Text == string.Empty)
+                createListFileNameTxtBox.Text = createFileNameText;
+
+            else if (createListLanguageTxtBox.Text == string.Empty)
+                createListLanguageTxtBox.Text = createLanguageText;
+
+            else if (SortListTxtBox.Text == string.Empty)
+                SortListTxtBox.Text = sortText;
+
+            else if (addWordsTextBox.Text == string.Empty)
+                addWordsTextBox.Text = addText;
+
+            else if (practiceTxtBox.Text == string.Empty)
+                practiceTxtBox.Text = practiceText;
+
+            if (sender is TextBox && sender != outputTxtBox)
+                (sender as TextBox).Clear();
+        }
     }
 }
