@@ -58,6 +58,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="outputTxtBox.Text" xml:space="preserve">
-    <value>Welcome. Start by loading a list using the LoadList form on the right. Once the list is loaded, the "No list loaded" label above will change color. Green indicates that a .dat file has been loaded and red indicated that no file has been found.</value>
+    <value>Welcome. Start by loading a list using the "Load List" form on the right. Once the list is loaded, the "No list loaded" label above will change color. Green indicates that a .dat file has been loaded and red indicated that no file has been found.
+
+When using the "Add Words" form, all the words need to to be added at the same time (separated by a blank space). You may add multiple words at the same time. However, these must be added in pairs or sets. For example, if a list contains 2 languages, you may not add 3 words.</value>
   </data>
 </root>

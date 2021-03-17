@@ -466,10 +466,10 @@ namespace WinFormsApp1
             this.removeFromLangComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removeFromLangComboBox.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.removeFromLangComboBox.FormattingEnabled = true;
-            this.removeFromLangComboBox.Location = new System.Drawing.Point(23, 116);
-            this.removeFromLangComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.removeFromLangComboBox.Location = new System.Drawing.Point(23, 120);
+            this.removeFromLangComboBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.removeFromLangComboBox.Name = "removeFromLangComboBox";
-            this.removeFromLangComboBox.Size = new System.Drawing.Size(315, 29);
+            this.removeFromLangComboBox.Size = new System.Drawing.Size(313, 29);
             this.removeFromLangComboBox.TabIndex = 7;
             this.removeFromLangComboBox.SelectedIndexChanged += new System.EventHandler(this.removeFromLangComboBox_SelectedIndexChanged_1);
             this.removeFromLangComboBox.Enter += new System.EventHandler(this.control_Enter);
@@ -561,7 +561,7 @@ namespace WinFormsApp1
             this.sortPanel.Location = new System.Drawing.Point(374, 533);
             this.sortPanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sortPanel.Name = "sortPanel";
-            this.sortPanel.Size = new System.Drawing.Size(360, 367);
+            this.sortPanel.Size = new System.Drawing.Size(347, 367);
             this.sortPanel.TabIndex = 0;
             // 
             // sortComboBox
@@ -571,9 +571,10 @@ namespace WinFormsApp1
             this.sortComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sortComboBox.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.sortComboBox.FormattingEnabled = true;
-            this.sortComboBox.Location = new System.Drawing.Point(23, 174);
+            this.sortComboBox.Location = new System.Drawing.Point(19, 172);
+            this.sortComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sortComboBox.Name = "sortComboBox";
-            this.sortComboBox.Size = new System.Drawing.Size(314, 29);
+            this.sortComboBox.Size = new System.Drawing.Size(318, 29);
             this.sortComboBox.TabIndex = 6;
             this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.sortComboBox_SelectedIndexChanged);
             // 
@@ -628,7 +629,7 @@ namespace WinFormsApp1
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(23, 141);
+            this.label9.Location = new System.Drawing.Point(19, 129);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(103, 24);
             this.label9.TabIndex = 0;
@@ -656,12 +657,14 @@ namespace WinFormsApp1
             this.githubPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.githubPictureBox.TabIndex = 1;
             this.githubPictureBox.TabStop = false;
+            this.githubPictureBox.Click += new System.EventHandler(this.githubPictureBox_Click);
             // 
             // exitApplicationButton
             // 
             this.exitApplicationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.exitApplicationButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitApplicationButton.FlatAppearance.BorderSize = 0;
+            this.exitApplicationButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.exitApplicationButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.exitApplicationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitApplicationButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -680,6 +683,7 @@ namespace WinFormsApp1
             this.minimizeApplicationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.minimizeApplicationButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizeApplicationButton.FlatAppearance.BorderSize = 0;
+            this.minimizeApplicationButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.minimizeApplicationButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.minimizeApplicationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.minimizeApplicationButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -743,7 +747,7 @@ namespace WinFormsApp1
             this.clearButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(360, 93);
-            this.clearButton.TabIndex = 5;
+            this.clearButton.TabIndex = 0;
             this.clearButton.Text = "CLEAR";
             this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
