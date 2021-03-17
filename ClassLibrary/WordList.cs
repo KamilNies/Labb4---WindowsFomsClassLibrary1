@@ -26,6 +26,8 @@ namespace ClassLibrary
             {
                 Languages[i] = languages[i].ToLower();
             }
+
+            Words = new List<Word>();
         }
 
         public Word this[int i]
