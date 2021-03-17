@@ -90,6 +90,9 @@ namespace WinFormsApp1
                     fileLoadedLabel.ForeColor = Color.Green;
                     fileLoadedLabel.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Program.currentList.Count()} word objects";
 
+                    removeWordsCheckedListBox.Items.Clear();
+                    removeFromLangComboBox.Items.Clear();
+
                     for (int i = 0; i < Program.currentList.Count(); i++)
                     {
                         removeWordsCheckedListBox.Items.Add(Program.currentList[i].Translations[0], false);
