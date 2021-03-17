@@ -16,19 +16,22 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        private string createFileNameText;
-        private string createLanguageText;
-        private string addText;
-        private string practiceText;
+        private readonly string _createFileNameText;
+        private readonly string _createLanguageText;
+        private readonly string _addText;
+        private readonly string _practiceText;
+
+        private Word[] consumedWords;
+        private int consumedCount;
 
         public Form1()
         {
             InitializeComponent();
 
-            createFileNameText = createListFileNameTxtBox.Text;
-            createLanguageText = createListLanguageTxtBox.Text;
-            addText = addWordsTextBox.Text;
-            practiceText = practiceTxtBox.Text;
+            _createFileNameText = createListFileNameTxtBox.Text;
+            _createLanguageText = createListLanguageTxtBox.Text;
+            _addText = addWordsTextBox.Text;
+            _practiceText = practiceTxtBox.Text;
 
             loadFNComboBox.Items.AddRange(WordList.GetLists());
 
@@ -316,10 +319,15 @@ namespace WinFormsApp1
             createButton.Enabled = false;
             clearButton.Enabled = false;
 
+            consumedCount = 0;
+            consumedWords = new Word[Program.currentList.Count() * Program.currentList.Languages.Length];
+
             Program.rngWord = Program.currentList.GetWordToPractice();
             string toLanguage = Program.currentList.Languages[Program.rngWord.ToLanguage];
             string fromLanguage = Program.rngWord.Translations[Program.rngWord.FromLanguage];
             showWords.Text = $"\"{fromLanguage}\" to {toLanguage}";
+
+            consumedWords[consumedCount++] = Program.rngWord;
         }
 
         private void checkPracticeWord_Click(object sender, EventArgs e)
@@ -330,13 +338,27 @@ namespace WinFormsApp1
                 return;
             }
 
+            
+
             if (practiceTxtBox.Text.ToLower() == Program.rngWord.Translations[Program.rngWord.ToLanguage])
             {
                 practicePanel.BackColor = Color.FromArgb(34, 139, 34);
                 practiceTxtBox.BackColor = Color.FromArgb(34, 139, 34);
                 outputTxtBox.Text += "Correct!" + Environment.NewLine;
 
+                if (consumedCount >= consumedWords.Length)
+                {
+                    exitPractice_Click(null, null);
+                    return;
+                }
+
                 Program.rngWord = Program.currentList.GetWordToPractice();
+
+                while (Array.Exists(consumedWords, w => w != null && w.Equals(Program.rngWord)))
+                {
+                    Program.rngWord = Program.currentList.GetWordToPractice();
+                }
+
                 string toLanguage = Program.currentList.Languages[Program.rngWord.ToLanguage];
                 string fromLanguage = Program.rngWord.Translations[Program.rngWord.FromLanguage];
                 showWords.Text = $"\"{fromLanguage}\" to {toLanguage}";
@@ -350,13 +372,27 @@ namespace WinFormsApp1
                 practiceTxtBox.BackColor = Color.FromArgb(178, 34, 34);
                 outputTxtBox.Text += $"Incorrect. The correct word was: {Program.rngWord.Translations[Program.rngWord.ToLanguage]}" + Environment.NewLine;
 
+                if (consumedCount >= consumedWords.Length)
+                {
+                    exitPractice_Click(null, null);
+                    return;
+                }
+
                 Program.rngWord = Program.currentList.GetWordToPractice();
+
+                while (Array.Exists(consumedWords, w => w != null && w.Equals(Program.rngWord)))
+                {
+                    Program.rngWord = Program.currentList.GetWordToPractice();
+                }
+
                 string toLanguage = Program.currentList.Languages[Program.rngWord.ToLanguage];
                 string fromLanguage = Program.rngWord.Translations[Program.rngWord.FromLanguage];
                 showWords.Text = $"\"{fromLanguage}\" to {toLanguage}";
                 practiceTxtBox.Text = "";
                 Program.denominator++;
             }
+
+            consumedWords[consumedCount++] = Program.rngWord;
         }
 
         private void exitPractice_Click(object sender, EventArgs e)
@@ -430,16 +466,16 @@ namespace WinFormsApp1
         private void control_Enter(object sender, EventArgs e)
         {
             if (createListFileNameTxtBox.Text == string.Empty)
-                createListFileNameTxtBox.Text = createFileNameText;
+                createListFileNameTxtBox.Text = _createFileNameText;
 
             else if (createListLanguageTxtBox.Text == string.Empty)
-                createListLanguageTxtBox.Text = createLanguageText;
+                createListLanguageTxtBox.Text = _createLanguageText;
 
             else if (addWordsTextBox.Text == string.Empty)
-                addWordsTextBox.Text = addText;
+                addWordsTextBox.Text = _addText;
 
             else if (practiceTxtBox.Text == string.Empty)
-                practiceTxtBox.Text = practiceText;
+                practiceTxtBox.Text = _practiceText;
 
             if (sender is TextBox && sender != outputTxtBox)
                 (sender as TextBox).Clear();
