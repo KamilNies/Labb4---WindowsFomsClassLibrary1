@@ -361,6 +361,7 @@ namespace WinFormsApp1
             this.loadButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("loadButton.BackgroundImage")));
             this.loadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loadButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.loadButton.Enabled = false;
             this.loadButton.FlatAppearance.BorderSize = 0;
             this.loadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
