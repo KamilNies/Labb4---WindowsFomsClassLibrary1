@@ -538,7 +538,7 @@ namespace WinFormsApp1
             // 
             // sortComboBox
             // 
-            this.sortComboBox.BackColor = System.Drawing.Color.Black;
+            this.sortComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.sortComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sortComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.sortComboBox.ForeColor = System.Drawing.SystemColors.HighlightText;
