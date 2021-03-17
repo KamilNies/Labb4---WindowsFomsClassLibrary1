@@ -16,7 +16,6 @@ namespace WinFormsApp1
 {
     public partial class Form1 : Form
     {
-        private string loadText;
         private string createFileNameText;
         private string createLanguageText;
         private string addText;
@@ -26,11 +25,12 @@ namespace WinFormsApp1
         {
             InitializeComponent();
 
-            loadText = loadFileNameTxtBox.Text;
             createFileNameText = createListFileNameTxtBox.Text;
             createLanguageText = createListLanguageTxtBox.Text;
             addText = addWordsTextBox.Text;
             practiceText = practiceTxtBox.Text;
+
+            loadFNComboBox.Items.AddRange(WordList.GetLists());
 
             // Set Button BG Images
             //**********************************************************************************************************
@@ -87,46 +87,40 @@ namespace WinFormsApp1
 
         private void loadButton_Click(object sender, EventArgs e)
         {
-            if (loadFileNameTxtBox.Text == "Enter file name without .dat extension" || loadFileNameTxtBox.Text == string.Empty)
+            Program.currentList = WordList.LoadList(loadFNComboBox.SelectedItem.ToString());
+            if (Program.currentList == null)
             {
-                MessageBox.Show("Textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                fileLoadedLabel.ForeColor = Color.DarkRed;
+                fileLoadedLabel.Text = "Cannot find file. File not loaded.";
             }
             else
             {
-                Program.currentList = WordList.LoadList(loadFileNameTxtBox.Text);
-                if (Program.currentList == null)
+                fileLoadedLabel.ForeColor = Color.Green;
+                fileLoadedLabel.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Program.currentList.Count()} word objects";
+
+                removeWordsCheckedListBox.Items.Clear();
+                removeFromLangComboBox.Items.Clear();
+
+                for (int i = 0; i < Program.currentList.Count(); i++)
                 {
-                    fileLoadedLabel.ForeColor = Color.DarkRed;
-                    fileLoadedLabel.Text = "Cannot find file. File not loaded.";
+                    removeWordsCheckedListBox.Items.Add(Program.currentList[i].Translations[0], false);
                 }
-                else
-                {
-                    fileLoadedLabel.ForeColor = Color.Green;
-                    fileLoadedLabel.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Program.currentList.Count()} word objects";
 
-                    removeWordsCheckedListBox.Items.Clear();
-                    removeFromLangComboBox.Items.Clear();
+                removeFromLangComboBox.Items.AddRange(Program.currentList.Languages);
 
-                    for (int i = 0; i < Program.currentList.Count(); i++)
-                    {
-                        removeWordsCheckedListBox.Items.Add(Program.currentList[i].Translations[0], false);
-                    }
+                removeFromLangComboBox.SelectedIndex = 0;
 
-                    removeFromLangComboBox.Items.AddRange(Program.currentList.Languages);
+                sortComboBox.Items.Clear();
+                sortComboBox.Items.AddRange(Program.currentList.Languages);
+                sortComboBox.SelectedIndex = 0;
 
-                    removeFromLangComboBox.SelectedIndex = 0;
+                outputTxtBox.Text = $"{Program.currentList.Name}.dat loaded. Contains: {Environment.NewLine}{Environment.NewLine}";
+                outputTxtBox.Text += string.Join(", ", Program.currentList.Languages);
 
-                    sortComboBox.Items.Clear();
-                    sortComboBox.Items.AddRange(Program.currentList.Languages);
-                    sortComboBox.SelectedIndex = 0;
-
-                    outputTxtBox.Text = $"{Program.currentList.Name}.dat loaded. Contains: " + Environment.NewLine + Environment.NewLine;
-                    outputTxtBox.Text += string.Join(", ", Program.currentList.Languages);
-
-                    Action<string[]> action = new Action<string[]>(ShowTranslations);
-                    Program.currentList.GetCurrentList(action);
-                }
+                Action<string[]> action = new Action<string[]>(ShowTranslations);
+                Program.currentList.GetCurrentList(action);
             }
+            
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -170,6 +164,8 @@ namespace WinFormsApp1
 
                 sortComboBox.Items.AddRange(Program.currentList.Languages);
                 sortComboBox.SelectedIndex = 0;
+
+                loadFNComboBox.Items.Add(fileName);
             }
 
         }
@@ -410,7 +406,6 @@ namespace WinFormsApp1
             fileLoadedLabel.Text = "No list loaded";
             fileLoadedLabel.ForeColor = Color.Black;
             loadButton.Enabled = true;
-            loadFileNameTxtBox.Text = "Enter file name without .dat extension";
             outputTxtBox.Text = "Welcome. Start by loading a list using the \"Load List\" form on the right. " +
                 "Once the list is loaded, the \"No list loaded\" label above will change color. " +
                 "Green indicates that a .dat file has been loaded and red indicated that no file has been found."
@@ -434,10 +429,7 @@ namespace WinFormsApp1
 
         private void control_Enter(object sender, EventArgs e)
         {
-            if (loadFileNameTxtBox.Text == string.Empty)
-                loadFileNameTxtBox.Text = loadText;
-
-            else if (createListFileNameTxtBox.Text == string.Empty)
+            if (createListFileNameTxtBox.Text == string.Empty)
                 createListFileNameTxtBox.Text = createFileNameText;
 
             else if (createListLanguageTxtBox.Text == string.Empty)

@@ -38,6 +38,7 @@ namespace ClassLibrary
         //Methods
         public static string[] GetLists()
         {
+            Directory.CreateDirectory(folder);
             string[] files = Directory.GetFiles(folder, "*.dat", SearchOption.AllDirectories);
             string[] nameArray = new string[files.Length];
 
