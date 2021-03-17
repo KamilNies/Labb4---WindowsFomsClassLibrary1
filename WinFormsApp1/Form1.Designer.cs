@@ -141,7 +141,6 @@ namespace WinFormsApp1
             this.createButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.createButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.createButton.FlatAppearance.BorderSize = 0;
-            this.createButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.createButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -268,7 +267,6 @@ namespace WinFormsApp1
             this.addButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addButton.FlatAppearance.BorderSize = 0;
-            this.addButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.addButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -364,7 +362,6 @@ namespace WinFormsApp1
             this.loadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loadButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loadButton.FlatAppearance.BorderSize = 0;
-            this.loadButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.loadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -485,7 +482,6 @@ namespace WinFormsApp1
             this.removeWordsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.removeWordsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeWordsButton.FlatAppearance.BorderSize = 0;
-            this.removeWordsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.removeWordsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.removeWordsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeWordsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -561,7 +557,6 @@ namespace WinFormsApp1
             this.Sort_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Sort_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Sort_Button.FlatAppearance.BorderSize = 0;
-            this.Sort_Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.Sort_Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Sort_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Sort_Button.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
