@@ -361,6 +361,8 @@ namespace WinFormsApp1
             // 
             // loadFNComboBox
             // 
+            this.loadFNComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.loadFNComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.loadFNComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.loadFNComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadFNComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -458,6 +460,8 @@ namespace WinFormsApp1
             // 
             // removeFromLangComboBox
             // 
+            this.removeFromLangComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.removeFromLangComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.removeFromLangComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.removeFromLangComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeFromLangComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -562,6 +566,8 @@ namespace WinFormsApp1
             // 
             // sortComboBox
             // 
+            this.sortComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.sortComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.sortComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.sortComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sortComboBox.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

@@ -90,7 +90,7 @@ namespace WinFormsApp1
 
         private void loadButton_Click(object sender, EventArgs e)
         {
-            Program.currentList = WordList.LoadList(loadFNComboBox.SelectedItem.ToString());
+            Program.currentList = WordList.LoadList(loadFNComboBox.SelectedItem?.ToString());
             if (Program.currentList == null)
             {
                 fileLoadedLabel.ForeColor = Color.DarkRed;
@@ -132,7 +132,7 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("File textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (createListLanguageTxtBox.Text == "Enter all languages seperated by space" || createListLanguageTxtBox.Text == string.Empty)
+            else if (createListLanguageTxtBox.Text == "Enter all languages separated by space" || createListLanguageTxtBox.Text == string.Empty)
             {
                 MessageBox.Show("Language textbox cannot be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -189,6 +189,18 @@ namespace WinFormsApp1
         }
         private void Sort_Button_Click(object sender, EventArgs e)
         {
+            if (Program.currentList == null)
+            {
+                MessageBox.Show("No list loaded. Please load a list before trying to sort by language.");
+                return;
+            }
+
+            if (!Array.Exists(Program.currentList.Languages, l => l.Equals(sortComboBox.Text, StringComparison.InvariantCultureIgnoreCase)))
+            {
+                MessageBox.Show("Invalid language! Try again.");
+                return;
+            }
+
             outputTxtBox.Text = $"Sorting words in {Program.currentList.Name}.dat based on {Program.currentList.Languages[sortComboBox.SelectedIndex]} translations:{Environment.NewLine}{Environment.NewLine}";
             outputTxtBox.Text += string.Join(", ", Program.currentList.Languages);
             Action<string[]> action = new Action<string[]>(ShowTranslations);
@@ -256,6 +268,18 @@ namespace WinFormsApp1
 
         public void RemoveWords(object sender, EventArgs e)
         {
+            if (Program.currentList == null)
+            {
+                MessageBox.Show("No list loaded. Please load a list before trying to remove words.");
+                return;
+            }
+
+            if (!Array.Exists(Program.currentList.Languages, l => l.Equals(removeFromLangComboBox.Text, StringComparison.InvariantCultureIgnoreCase)))
+            {
+                MessageBox.Show("Invalid language! Try again.");
+                return;
+            }
+
             var wordList = Program.currentList;
 
             if (wordList == null)
@@ -275,6 +299,7 @@ namespace WinFormsApp1
 
             while (wordItemsToBeRemoved.Count > 0)
             {
+                
                 wordList.Remove(removeFromLangComboBox.SelectedIndex, wordItemsToBeRemoved[0].ToString());
                 removeWordsCheckedListBox.Items.Remove(wordItemsToBeRemoved[0]);
             }
