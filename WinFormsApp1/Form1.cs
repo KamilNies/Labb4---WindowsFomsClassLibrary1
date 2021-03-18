@@ -162,9 +162,11 @@ namespace WinFormsApp1
 
                 outputTxtBox.Text = $"{Program.currentList.Name}.dat successfully created.";
 
+                removeFromLangComboBox.Items.Clear();
                 removeFromLangComboBox.Items.AddRange(Program.currentList.Languages);
                 removeFromLangComboBox.SelectedIndex = 0;
 
+                sortComboBox.Items.Clear();
                 sortComboBox.Items.AddRange(Program.currentList.Languages);
                 sortComboBox.SelectedIndex = 0;
 
