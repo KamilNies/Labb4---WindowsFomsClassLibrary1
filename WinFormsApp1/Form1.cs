@@ -461,6 +461,7 @@ namespace WinFormsApp1
             removeFromLangComboBox.Items.Clear();
             removeFromLangComboBox.Text = string.Empty;
             removeWordsCheckedListBox.Items.Clear();
+            loadFNComboBox.Text = string.Empty;
         }
 
         private void control_Enter(object sender, EventArgs e)
